@@ -3,8 +3,8 @@ import toast from 'react-hot-toast'
 
 export default function Home() {
   return (
-    <div>
+    <main>
       <button onClick={() => toast.success('Hello toast!') }>Toast me</button>
-    </div>
+    </main>
   )
 }
