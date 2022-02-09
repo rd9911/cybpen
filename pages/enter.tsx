@@ -8,7 +8,6 @@ import { UserContext } from '../lib/context';
 import { getFirestore, doc, getDoc, writeBatch } from 'firebase/firestore';
 import  debounce from 'lodash.debounce'
 
-
 export default function EnterPage( {} ) {
   const { user, username } = useContext(UserContext)
 

@@ -16,8 +16,8 @@ export default function Navbar( {} ) {
                   { username && (
                     <>
                       <li className='push-left'><SignOutBtn /></li>
-                      <li> <Link href={'/admin'} passHref><button className='btn-blue'> Write Post </button></Link> </li>
-                      <li> <Link href={`/${username}`} passHref><Image src={user?.photoURL || userLogo } alt='profile-picture' height={'30px'} width={'30px'}/></Link> </li>
+                      <li><Link href={'/admin'} passHref><button className='btn-blue'> Write Post </button></Link> </li>
+                      <li><Link href={`/${username}`} passHref><Image src={user?.photoURL || userLogo } alt='profile-picture' height={'30px'} width={'30px'}/></Link></li>
                     </>
                   ) }
                   { !username && (
