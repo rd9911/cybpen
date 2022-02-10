@@ -7,7 +7,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { UserContext } from '../lib/context';
 import { getFirestore, doc, getDoc, writeBatch } from 'firebase/firestore';
 import  debounce from 'lodash.debounce'
-
+console
 export default function EnterPage( {} ) {
   const { user, username } = useContext(UserContext)
 
@@ -52,7 +52,7 @@ function UsernameForm () {
 
   useEffect(() => {
     checkUsernameFunc(formValue)
-  }, [formValue])
+  }, [checkUsernameFunc, formValue])
 
   const onChangeFunc = (event: any) => {
     const value = event.target.value.toLowerCase();
@@ -75,7 +75,6 @@ function UsernameForm () {
       if ( username.length >= 3 ) {
         const ref = doc(getFirestore(), 'usernames', username)
         const snap = await getDoc(ref)
-        console.log('Firestore read executed!')
         setIsValid(!snap.exists())
         setLoading(false)
       }
@@ -84,7 +83,6 @@ function UsernameForm () {
   )
   async function onSubmit(event) {
     event.preventDefault();
-    console.log(event.target.value)
     const userDoc = doc(getFirestore(), 'users', user.uid)
     const usernameDoc = doc(getFirestore(), 'usernames', formValue)
 
