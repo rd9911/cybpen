@@ -12,7 +12,7 @@ export default function Navbar( {} ) {
       <div>
             <nav className='navbar'>
                 <ul>
-                  <li> <Link href={'/'} passHref><button className='btn-logo'> Feed </button></Link> </li>
+                  <li><Link href={'/'} passHref><button className='btn-logo'>Feed</button></Link></li>
                   { username && (
                     <>
                       <li className='push-left'><SignOutBtn /></li>
@@ -22,7 +22,7 @@ export default function Navbar( {} ) {
                   ) }
                   { !username && (
                     <>
-                      <li> <Link href={'/enter'} passHref><button className='btn-blue'> Log In </button></Link> </li>
+                      <li><Link href={'/enter'} passHref><button className='btn-blue'>Log In</button></Link></li>
                     </>
                   ) }
                 </ul>

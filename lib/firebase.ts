@@ -2,6 +2,7 @@
 import firebase, { initializeApp, getApps } from "firebase/app";
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 import { collection, getDoc, query, getFirestore, addDoc, doc, where, limit, getDocs, DocumentSnapshot } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,6 +27,8 @@ if (!getApps().length) {
 export const provider = new GoogleAuthProvider()
 export const auth = getAuth(app)
 export const db = getFirestore(app)
+export const storage = getStorage(app)
+export const STATE_CHANGED = 'state_changed'
 
 
 // Helper functions
@@ -54,3 +57,4 @@ export function postToJSON(doc) {
     updatedAt: data?.updatedAt.toMillis() || 0,
   }
 }
+

@@ -2,6 +2,10 @@ import { collectionGroup, doc, getDoc, getDocs, getFirestore, limit, query, wher
 import { db, getUserWithUsername, postToJSON } from "../../lib/firebase";
 import { useDocumentData } from 'react-firebase-hooks/firestore'
 import PostContent from "../../components/PostContent";
+import AuthCheck from "../../components/AuthCheck";
+import LikeBtn from "../../components/LikeBtn";
+import Link from "next/link";
+import styles from '../../styles/Post.module.css'
 
 export async function getStaticProps({ params }) {
   const { username, slug } = params;
@@ -41,10 +45,19 @@ export default function Post(props) {
   const [realTimePost] = useDocumentData(postRef)
   const post = realTimePost || props.post
   return (
-    <main className='container'>
+    <main className={styles.container}>
       <section><PostContent post={post} /></section>
       <aside className="card">
         <p><strong>{post.heartCount || 0} ❤️</strong></p>
+        <AuthCheck 
+          fallback={
+            <Link href='/enter' passHref>
+              <button>❤️ Sign in</button>
+            </Link>
+          }
+        >
+          <LikeBtn postRef={postRef} />
+        </AuthCheck>
       </aside>
     </main>
     );
