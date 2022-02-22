@@ -52,7 +52,7 @@ function UsernameForm () {
 
   useEffect(() => {
     checkUsernameFunc(formValue)
-  }, [checkUsernameFunc, formValue])
+  }, [formValue])
 
   const onChangeFunc = (event: any) => {
     const value = event.target.value.toLowerCase();
