@@ -33,7 +33,10 @@ function SignInBtn () {
 
   return (
     <div>
-      <button className="btn-google" onClick={signInWithGoogle}><Image src={google_image} alt="google-logo" width={'30px'} height={'30px'} /></button>
+      <button className="btn-google" onClick={signInWithGoogle}>
+        <p>Sign in with Google</p>
+        <Image src={google_image} alt="google-logo" width={'30px'} height={'30px'} />
+      </button>
       <button onClick={ () => signInAnonymously(auth) }>Sign in ananymously</button>
     </div>
   )
@@ -52,6 +55,7 @@ function UsernameForm () {
 
   useEffect(() => {
     checkUsernameFunc(formValue)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formValue])
 
   const onChangeFunc = (event: any) => {
