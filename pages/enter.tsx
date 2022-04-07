@@ -14,7 +14,8 @@ export default function EnterPage( {} ) {
   return (
     <main>
         <h1>Sign in</h1>
-        { user ? 
+        {console.log(user)}
+        { user ?
             !username ? <UsernameForm /> : <SignOutBtn />
             : <SignInBtn /> }
     </main>

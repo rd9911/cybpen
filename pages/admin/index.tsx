@@ -18,8 +18,8 @@ export default function AdminPostPage() {
     <main>
       <Metatags title="admin page" description="all needed info about admin" image={null} />
       <AuthCheck>
-        <PostList />
         <CreateNewPost />
+        <PostList />
       </AuthCheck>
     </main>
     );

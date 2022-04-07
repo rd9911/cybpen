@@ -27,7 +27,7 @@ service cloud.firestore {
       function isValidUser(userId) {
         let isOwner = request.auth.uid == userId;
         let username = request.resource.data.username;
-        let createdValidUsername = existAfter(/databases/$(database)/documents/usernames/$(username));
+        let createdValidUsername = existsAfter(/databases/$(database)/documents/usernames/$(username));
 
         return isOwner && createdValidUsername;
       }
@@ -59,7 +59,7 @@ service cloud.firestore {
       function canIncrementHearts(userId, postId) {
         let hasValidFields = request.resource.data.diff(resource.data).affectedKeys().hasOnly(['heartCount']);
         let currentUser = request.auth.uid;
-        let heartDocExistAfter = existAfter(/databases/$(database)/documents/users/$(userId)/posts/$(postId)/hearts/$(currentUser));
+        let heartDocExistAfter = existsAfter(/databases/$(database)/documents/users/$(userId)/posts/$(postId)/hearts/$(currentUser));
         let heartDocExists = exists(/databases/$(database)/documents/users/$(userId)/posts/$(postId)/hearts/$(currentUser));
         
         let heartDocAdded = !heartDocExists && heartDocExistAfter;
