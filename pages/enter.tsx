@@ -7,6 +7,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { UserContext } from '../lib/context';
 import { getFirestore, doc, getDoc, writeBatch } from 'firebase/firestore';
 import  debounce from 'lodash.debounce'
+import Router from 'next/router';
 
 export default function EnterPage( {} ) {
   const { user, username } = useContext(UserContext)
@@ -44,7 +45,11 @@ function SignInBtn () {
 }
 
 export function SignOutBtn () {
-  return <button onClick={() => signOut(auth)}>Sign Out</button>
+  const signOutAndRedirect = () => {
+    signOut(auth)
+    Router.push('/')
+  }
+  return <button onClick={signOutAndRedirect}>Sign Out</button>
 }
 
 function UsernameForm () {

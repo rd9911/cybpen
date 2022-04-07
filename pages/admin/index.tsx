@@ -12,6 +12,7 @@ import { UserContext } from "../../lib/context";
 import { auth, db } from '../../lib/firebase'
 import kebabCase from 'lodash.kebabcase'
 import toast from 'react-hot-toast';
+import Router from 'next/router';
 
 export default function AdminPostPage() {
   return (

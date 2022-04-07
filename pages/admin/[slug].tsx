@@ -1,6 +1,6 @@
 import styles from '../../styles/Admin.module.css'
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import { useForm } from "react-hook-form";
 import reactMarkdown from "react-markdown";
@@ -50,7 +50,6 @@ function PostManager() {
 
 function PostForm({ defaultValues, postRef, preview }) {
   const { register, handleSubmit, reset, watch, formState } = useForm({ defaultValues, mode: 'onChange' })
-
   const { isValid, isDirty } = formState;
 
   const updatePost = async ({ content, published }) => {
